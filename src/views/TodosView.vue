@@ -17,7 +17,9 @@ const createTodo = (todo) => {
 <template>
   <main>
     <h1>Create Todo</h1>
-    <TodoCreator @create-todo="createTodo" />
+    <CreateTodo @create-todo="createTodo">
+      <template #button-content>Create</template>
+    </CreateTodo>
   </main>
 </template>
 
