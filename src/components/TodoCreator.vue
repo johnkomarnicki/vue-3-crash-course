@@ -1,15 +1,15 @@
+<script setup>
+import { ref } from "vue";
+
+const todo = ref("");
+</script>
+
 <template>
   <div class="input-wrap">
     <input type="text" v-model="todo" />
     <button>Create</button>
   </div>
 </template>
-
-<script setup>
-import { ref } from "vue";
-
-const todo = ref("");
-</script>
 
 <style lang="scss" scoped>
 .input-wrap {
