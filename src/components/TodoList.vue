@@ -10,7 +10,7 @@ const props = defineProps({
 
 <template>
   <ul class="todo-list" v-if="todoList.length > 0">
-    <li v-for="todo in todoList">
+    <li v-for="(todo, index) in todoList">
       <input type="checkbox" v-model="todo.isCompleted" />
       <div class="todo">
         <input v-if="todo.isEditing" type="text" v-model="todo.todo" />
@@ -25,6 +25,7 @@ const props = defineProps({
           class="icon check-icon"
           color="41b080"
           width="22"
+          @click="$emit('edit-todo', index)"
         />
         <Icon
           v-else
@@ -32,6 +33,7 @@ const props = defineProps({
           class="icon edit-icon"
           color="41b080"
           width="22"
+          @click="$emit('edit-todo', index)"
         />
         <Icon
           icon="ph:trash"

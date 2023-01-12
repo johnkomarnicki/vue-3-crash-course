@@ -13,6 +13,10 @@ const createTodo = (todo) => {
     isEditing: null,
   });
 };
+
+const toggleEditTodo = (todoPos) => {
+  todoList.value[todoPos].isEditing = !todoList.value[todoPos].isEditing;
+};
 </script>
 
 <template>
@@ -21,7 +25,7 @@ const createTodo = (todo) => {
     <TodoCreator @create-todo="createTodo">
       <template #button-content>Create</template>
     </TodoCreator>
-    <TodoList :todoList="todoList" />
+    <TodoList :todoList="todoList" @edit-todo="toggleEditTodo" />
   </main>
 </template>
 
