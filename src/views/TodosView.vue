@@ -17,6 +17,10 @@ const createTodo = (todo) => {
 const toggleEditTodo = (todoPos) => {
   todoList.value[todoPos].isEditing = !todoList.value[todoPos].isEditing;
 };
+
+const updateTodo = (todoVal, todoPos) => {
+  todoList.value[todoPos].todo = todoVal;
+};
 </script>
 
 <template>
@@ -25,7 +29,11 @@ const toggleEditTodo = (todoPos) => {
     <TodoCreator @create-todo="createTodo">
       <template #button-content>Create</template>
     </TodoCreator>
-    <TodoList :todoList="todoList" @edit-todo="toggleEditTodo" />
+    <TodoList
+      :todoList="todoList"
+      @edit-todo="toggleEditTodo"
+      @update-todo="updateTodo"
+    />
   </main>
 </template>
 
