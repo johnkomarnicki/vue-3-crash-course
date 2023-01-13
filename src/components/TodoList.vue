@@ -11,9 +11,9 @@ const props = defineProps({
 <template>
   <ul class="todo-list" v-if="todoList.length > 0">
     <li v-for="todo in todoList">
-      <input type="checkbox" v-model="todo.isCompleted" />
+      <input type="checkbox" :value="todo.isCompleted" />
       <div class="todo">
-        <input v-if="todo.isEditing" type="text" v-model="todo.todo" />
+        <input v-if="todo.isEditing" type="text" :value="todo.todo" />
         <span v-else>
           {{ todo.todo }}
         </span>
