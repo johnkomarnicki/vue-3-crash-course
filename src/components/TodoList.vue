@@ -11,7 +11,11 @@ const props = defineProps({
 <template>
   <ul class="todo-list" v-if="todoList.length > 0">
     <li v-for="(todo, index) in todoList">
-      <input type="checkbox" :value="todo.isCompleted" />
+      <input
+        type="checkbox"
+        :value="todo.isCompleted"
+        @input="$emit('toggle-complete', index)"
+      />
       <div class="todo">
         <input
           v-if="todo.isEditing"
@@ -19,7 +23,12 @@ const props = defineProps({
           :value="todo.todo"
           @input="$emit('update-todo', $event.target.value, index)"
         />
-        <span v-else>
+        <span
+          v-else
+          :class="{
+            'completed-todo': todo.isCompleted,
+          }"
+        >
           {{ todo.todo }}
         </span>
       </div>
@@ -94,6 +103,10 @@ const props = defineProps({
 
     .todo {
       flex: 1;
+
+      .completed-todo {
+        text-decoration: line-through;
+      }
 
       input[type="text"] {
         width: 100%;

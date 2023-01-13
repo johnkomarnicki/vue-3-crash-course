@@ -21,6 +21,10 @@ const toggleEditTodo = (todoPos) => {
 const updateTodo = (todoVal, todoPos) => {
   todoList.value[todoPos].todo = todoVal;
 };
+
+const toggleTodoComplete = (todoPos) => {
+  todoList.value[todoPos].isCompleted = !todoList.value[todoPos].isCompleted;
+};
 </script>
 
 <template>
@@ -33,6 +37,7 @@ const updateTodo = (todoVal, todoPos) => {
       :todoList="todoList"
       @edit-todo="toggleEditTodo"
       @update-todo="updateTodo"
+      @toggle-complete="toggleTodoComplete"
     />
   </main>
 </template>
