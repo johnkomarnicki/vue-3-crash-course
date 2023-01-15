@@ -6,6 +6,12 @@ const props = defineProps({
     default: () => [],
   },
 });
+const emit = defineEmits([
+  "toggle-complete",
+  "update-todo",
+  "edit-todo",
+  "delete-todo",
+]);
 </script>
 
 <template>
@@ -14,6 +20,7 @@ const props = defineProps({
       <input
         type="checkbox"
         :value="todo.isCompleted"
+        :checked="todo.isCompleted"
         @input="$emit('toggle-complete', index)"
       />
       <div class="todo">
