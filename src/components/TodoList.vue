@@ -5,7 +5,18 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  todosCompleted: {
+    type: Boolean,
+    default: false,
+  },
 });
+
+const emit = defineEmits([
+  "toggle-complete",
+  "update-todo",
+  "edit-todo",
+  "delete-todo",
+]);
 </script>
 
 <template>
@@ -14,6 +25,7 @@ const props = defineProps({
       <input
         type="checkbox"
         :value="todo.isCompleted"
+        :checked="todo.isCompleted"
         @input="$emit('toggle-complete', index)"
       />
       <div class="todo">
@@ -62,6 +74,10 @@ const props = defineProps({
   <p v-else class="todos-msg">
     <Icon icon="noto-v1:sad-but-relieved-face" />
     <span>You have no todo's to complete! Add one!</span>
+  </p>
+  <p v-if="todosCompleted && todoList.length > 0" class="todos-msg">
+    <Icon icon="noto-v1:party-popper" />
+    <span>You have completed all your todos!</span>
   </p>
 </template>
 

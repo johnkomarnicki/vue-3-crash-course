@@ -1,10 +1,14 @@
 <script setup>
 import { uid } from "uid";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import TodoCreator from "../components/TodoCreator.vue";
 import TodoList from "../components/TodoList.vue";
 
 const todoList = ref([]);
+
+const todosCompleted = computed(() => {
+  return todoList.value.every((todo) => todo.isCompleted);
+});
 
 const fetchTodoList = () => {
   const savedTodoList = JSON.parse(localStorage.getItem("todoList"));
@@ -61,6 +65,7 @@ const deleteTodo = (todo) => {
     </TodoCreator>
     <TodoList
       :todoList="todoList"
+      :todosCompleted="todosCompleted"
       @edit-todo="toggleEditTodo"
       @update-todo="updateTodo"
       @toggle-complete="toggleTodoComplete"
