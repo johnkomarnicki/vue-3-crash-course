@@ -1,5 +1,4 @@
 <script setup>
-import { Icon } from "@iconify/vue";
 import { uid } from "uid";
 import { ref } from "vue";
 import TodoCreator from "../components/TodoCreator.vue";
@@ -32,9 +31,8 @@ const updateTodo = (todoVal, todoPos) => {
     </TodoCreator>
     <ul class="todo-list" v-if="todoList.length > 0">
       <TodoItem
-        v-for="(todo, index) in todoList"
+        v-for="todo in todoList"
         :todo="todo"
-        :index="index"
         @edit-todo="toggleEditTodo"
         @update-todo="updateTodo"
       />
