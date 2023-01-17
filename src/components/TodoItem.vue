@@ -18,7 +18,7 @@ defineEmits(["edit-todo", "update-todo", "toggle-complete", "delete-todo"]);
   <li>
     <input
       type="checkbox"
-      :isChecked="todo.isCompleted"
+      :checked="todo.isCompleted"
       @input="$emit('toggle-complete', index)"
     />
     <div class="todo">
