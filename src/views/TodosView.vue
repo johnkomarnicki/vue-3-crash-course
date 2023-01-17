@@ -36,8 +36,9 @@ const toggleTodoComplete = (todoPos) => {
     </TodoCreator>
     <ul class="todo-list" v-if="todoList.length > 0">
       <TodoItem
-        v-for="todo in todoList"
+        v-for="(todo, index) in todoList"
         :todo="todo"
+        :index="index"
         @edit-todo="toggleEditTodo"
         @update-todo="updateTodo"
         @toggle-complete="toggleTodoComplete"
