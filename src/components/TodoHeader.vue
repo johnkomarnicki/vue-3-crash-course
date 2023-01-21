@@ -10,7 +10,7 @@ import { RouterLink } from "vue-router";
         <h1>Vue Todos</h1>
       </div>
       <ul class="nav-routes">
-        <RouterLink :to="{ name: 'todos' }">Todos</RouterLink>
+        <RouterLink :to="{ name: 'todos' }"> Todos</RouterLink>
         <RouterLink :to="{ name: 'about' }">About</RouterLink>
       </ul>
     </nav>
